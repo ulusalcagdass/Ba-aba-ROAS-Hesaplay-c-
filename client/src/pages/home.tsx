@@ -1129,14 +1129,6 @@ export default function Home() {
       <footer className="text-center text-sm text-muted-foreground py-8">
         <div className="flex items-center justify-center gap-2">
           <span>{t("footerText")}</span>
-          <a
-            href="https://x.com/cagdascalim"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-primary hover:underline"
-          >
-            @cagdascalim
-          </a>
         </div>
       </footer>
     </div>
