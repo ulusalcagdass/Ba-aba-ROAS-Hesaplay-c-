@@ -59,6 +59,9 @@ import {
 
 import { useI18n } from "@/lib/i18n";
 import { ModeToggle } from "@/components/mode-toggle";
+import { CountUp } from "@/components/count-up";
+import { StickyResultBar } from "@/components/sticky-result-bar";
+import { motion } from "framer-motion";
 
 interface Calculation {
   id: string;
@@ -202,7 +205,7 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card>
+        <Card className="hover-elevate transition-all duration-200 border-opacity-50">
           <CardHeader className="pb-4">
             <CardTitle className="flex items-center gap-2 text-xl">
               <Package className="w-5 h-5 text-primary" />
@@ -248,7 +251,7 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="hover-elevate transition-all duration-200 border-opacity-50">
           <CardHeader className="pb-4">
             <CardTitle className="flex items-center gap-2 text-xl">
               <CreditCard className="w-5 h-5 text-primary" />
@@ -328,7 +331,7 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
         </Card>
       </div>
 
-      <Card className="bg-muted/30">
+      <Card className="bg-muted/30 border-none shadow-sm hover:shadow-md transition-all duration-200">
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center gap-2 text-xl">
             <DollarSign className="w-5 h-5 text-primary" />
@@ -337,36 +340,36 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="p-4 bg-card rounded-lg border border-card-border">
+            <div className="p-4 bg-card rounded-lg border border-card-border hover-elevate transition-all duration-200">
               <p className="text-sm text-muted-foreground mb-1">{t("creditCardFee")}</p>
               <p className="text-lg font-semibold" data-testid={`text-credit-card-fee-${index}`}>
-                {formatCurrency(calculations.creditCardFee)}
+                <CountUp value={calculations.creditCardFee} formatter={formatCurrency} />
               </p>
             </div>
-            <div className="p-4 bg-card rounded-lg border border-card-border">
+            <div className="p-4 bg-card rounded-lg border border-card-border hover-elevate transition-all duration-200">
               <p className="text-sm text-muted-foreground mb-1">{t("totalCost")}</p>
               <p className="text-lg font-semibold" data-testid={`text-total-cost-${index}`}>
-                {formatCurrency(calculations.totalProductCostPlusFulfillment)}
+                <CountUp value={calculations.totalProductCostPlusFulfillment} formatter={formatCurrency} />
               </p>
             </div>
-            <div className="p-4 bg-card rounded-lg border border-card-border">
+            <div className="p-4 bg-card rounded-lg border border-card-border hover-elevate transition-all duration-200">
               <p className="text-sm text-muted-foreground mb-1">{t("costPercentage")}</p>
               <p className="text-lg font-semibold" data-testid={`text-cost-percentage-${index}`}>
-                {formatPercent(calculations.costPercentage)}
+                <CountUp value={calculations.costPercentage} formatter={formatPercent} />
               </p>
             </div>
-            <div className="p-4 bg-card rounded-lg border border-card-border">
+            <div className="p-4 bg-card rounded-lg border border-card-border hover-elevate transition-all duration-200">
               <p className="text-sm text-muted-foreground mb-1">{t("grossMargin")}</p>
               <p className="text-lg font-semibold text-green-600 dark:text-green-400" data-testid={`text-gross-margin-${index}`}>
-                {formatPercent(calculations.grossMarginPercent)}
+                <CountUp value={calculations.grossMarginPercent} formatter={formatPercent} />
               </p>
             </div>
           </div>
           <div className="mt-4 grid grid-cols-1 gap-4">
-            <div className="p-4 bg-primary/5 rounded-lg border border-primary/20">
+            <div className="p-4 bg-primary/5 rounded-lg border border-primary/20 hover:bg-primary/10 transition-colors duration-200">
               <p className="text-sm text-muted-foreground mb-1">{t("expectedProfit")}</p>
               <p className="text-2xl font-bold text-primary" data-testid={`text-profit-per-order-${index}`}>
-                {formatCurrency(calculations.expectedGrossProfit)}
+                <CountUp value={calculations.expectedGrossProfit} formatter={formatCurrency} />
               </p>
             </div>
 
@@ -375,7 +378,7 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
       </Card>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-        <Card className="border-2 border-primary/50 bg-primary/5 col-span-2 sm:col-span-1 md:col-span-1">
+        <Card className="border-2 border-primary/50 bg-primary/5 col-span-2 sm:col-span-1 md:col-span-1 hover:scale-[1.02] transition-transform duration-200">
           <CardContent className="pt-6 text-center">
             <div className="flex justify-center mb-3">
               <div className="p-2 bg-primary/20 rounded-full">
@@ -383,14 +386,14 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
               </div>
             </div>
             <p className="text-2xl font-bold text-primary mb-1" data-testid={`text-break-even-roas-${index}`}>
-              {formatRoas(calculations.breakEvenRoas)}
+              <CountUp value={calculations.breakEvenRoas} formatter={formatRoas} />
             </p>
             <p className="text-xs text-muted-foreground font-medium">{t("breakEvenRoas")}</p>
           </CardContent>
         </Card>
 
         {calculations.roasTargets.map((target) => (
-          <Card key={target.margin}>
+          <Card key={target.margin} className="hover-elevate hover:-translate-y-1 transition-all duration-200 cursor-default">
             <CardContent className="pt-6 text-center">
               <div className="flex justify-center mb-3">
                 <div className="p-2 bg-secondary rounded-full">
@@ -398,7 +401,7 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
                 </div>
               </div>
               <p className="text-2xl font-bold text-foreground mb-1">
-                {formatRoas(target.roas)}
+                <CountUp value={target.roas} formatter={formatRoas} />
               </p>
               <p className="text-xs text-muted-foreground font-medium">{t("marginRoas").replace("ROAS", "")} %{target.margin}</p>
             </CardContent>
@@ -423,6 +426,8 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
           </p>
         </div>
       )}
+
+
     </div>
   );
 }
@@ -589,6 +594,20 @@ function RoasChart({ products, allCalculations }: RoasChartProps) {
           <div className="h-[300px]" data-testid="chart-roas-comparison">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                <defs>
+                  <linearGradient id="colorBreakEven" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.8} />
+                    <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0.1} />
+                  </linearGradient>
+                  <linearGradient id="colorRoas10" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#22c55e" stopOpacity={0.8} />
+                    <stop offset="95%" stopColor="#22c55e" stopOpacity={0.1} />
+                  </linearGradient>
+                  <linearGradient id="colorRoas20" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#a855f7" stopOpacity={0.8} />
+                    <stop offset="95%" stopColor="#a855f7" stopOpacity={0.1} />
+                  </linearGradient>
+                </defs>
                 <CartesianGrid strokeDasharray="3 3" className="opacity-30" />
                 <XAxis dataKey="name" tick={{ fontSize: 12 }} />
                 <YAxis tick={{ fontSize: 12 }} />
@@ -599,11 +618,12 @@ function RoasChart({ products, allCalculations }: RoasChartProps) {
                     border: '1px solid hsl(var(--border))',
                     borderRadius: '6px'
                   }}
+                  cursor={{ fill: 'transparent' }}
                 />
                 <Legend />
-                <Bar dataKey={t("breakEvenRoas")} fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
-                <Bar dataKey={`%10 ${t("marginRoas").replace("ROAS", "")}`} fill="#22c55e" radius={[4, 4, 0, 0]} />
-                <Bar dataKey={`%20 ${t("marginRoas").replace("ROAS", "")}`} fill="#a855f7" radius={[4, 4, 0, 0]} />
+                <Bar dataKey={t("breakEvenRoas")} fill="url(#colorBreakEven)" radius={[4, 4, 0, 0]} />
+                <Bar dataKey={`%10 ${t("marginRoas").replace("ROAS", "")}`} fill="url(#colorRoas10)" radius={[4, 4, 0, 0]} />
+                <Bar dataKey={`%20 ${t("marginRoas").replace("ROAS", "")}`} fill="url(#colorRoas20)" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -621,6 +641,16 @@ function RoasChart({ products, allCalculations }: RoasChartProps) {
           <div className="h-[300px]" data-testid="chart-margin-comparison">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={marginChartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                <defs>
+                  <linearGradient id="colorMargin" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#22c55e" stopOpacity={0.8} />
+                    <stop offset="95%" stopColor="#22c55e" stopOpacity={0.1} />
+                  </linearGradient>
+                  <linearGradient id="colorCost" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#ef4444" stopOpacity={0.8} />
+                    <stop offset="95%" stopColor="#ef4444" stopOpacity={0.1} />
+                  </linearGradient>
+                </defs>
                 <CartesianGrid strokeDasharray="3 3" className="opacity-30" />
                 <XAxis dataKey="name" tick={{ fontSize: 12 }} />
                 <YAxis tick={{ fontSize: 12 }} unit="%" />
@@ -631,10 +661,11 @@ function RoasChart({ products, allCalculations }: RoasChartProps) {
                     border: '1px solid hsl(var(--border))',
                     borderRadius: '6px'
                   }}
+                  cursor={{ fill: 'transparent' }}
                 />
                 <Legend />
-                <Bar dataKey={t("grossMargin")} fill="#22c55e" radius={[4, 4, 0, 0]} />
-                <Bar dataKey={t("costPercentage")} fill="#ef4444" radius={[4, 4, 0, 0]} />
+                <Bar dataKey={t("grossMargin")} fill="url(#colorMargin)" radius={[4, 4, 0, 0]} />
+                <Bar dataKey={t("costPercentage")} fill="url(#colorCost)" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -1131,6 +1162,13 @@ export default function Home() {
           <span>{t("footerText")}</span>
         </div>
       </footer>
+
+      {/* Sticky Mobile Result Bar */}
+      <StickyResultBar
+        expectedProfit={allCalculations.get(activeTab)?.expectedGrossProfit || 0}
+        breakEvenRoas={allCalculations.get(activeTab)?.breakEvenRoas || 0}
+        grossMargin={allCalculations.get(activeTab)?.grossMarginPercent || 0}
+      />
     </div>
   );
 }
