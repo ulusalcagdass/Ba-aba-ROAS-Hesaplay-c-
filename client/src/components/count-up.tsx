@@ -17,14 +17,12 @@ export function CountUp({
     formatter
 }: CountUpProps) {
     const ref = useRef<HTMLSpanElement>(null);
-    const motionValue = useMotionValue(0);
+    const motionValue = useMotionValue(0); // Start from 0 or previous value
     const springValue = useSpring(motionValue, {
         damping: 30,
         stiffness: 100,
     });
-    // Removed negative margin to ensure it triggers easily. 
-    // "once: true" is good to keep it from re-animating.
-    const isInView = useInView(ref, { once: true, margin: "0px" });
+    const isInView = useInView(ref, { once: true, margin: "-100px" });
 
     useEffect(() => {
         if (isInView) {
@@ -33,18 +31,11 @@ export function CountUp({
     }, [motionValue, isInView, value]);
 
     useEffect(() => {
-        // creating a closure to format handles strict effect
-        const updateText = (val: number) => {
-            if (ref.current) {
-                ref.current.textContent = formatter ? formatter(val) : val.toFixed(0);
-            }
-        }
-
-        // Initialize immediately
-        updateText(springValue.get());
-
         return springValue.on("change", (latest) => {
-            updateText(latest);
+            if (ref.current) {
+                // If a formatter is provided, use it. Otherwise, simple toFixed.
+                ref.current.textContent = formatter ? formatter(latest) : latest.toFixed(0);
+            }
         });
     }, [springValue, formatter]);
 
