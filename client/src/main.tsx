@@ -11,3 +11,5 @@ createRoot(document.getElementById("root")!).render(
         </I18nProvider>
     </ThemeProvider>
 );
+
+console.log("App mounted v2.1 - Deployment Verified");

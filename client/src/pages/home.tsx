@@ -371,9 +371,9 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
               <p
                 key={calculations.grossMarginPercent}
                 className={`text-lg font-semibold animate-flash px-2 -mx-2 ${calculations.grossMarginPercent < 0 ? "text-red-500 dark:text-red-400" :
-                    calculations.grossMarginPercent < 20 ? "text-orange-500 dark:text-orange-400" :
-                      calculations.grossMarginPercent < 50 ? "text-green-600 dark:text-green-400" :
-                        "text-yellow-600 dark:text-yellow-400"
+                  calculations.grossMarginPercent < 20 ? "text-orange-500 dark:text-orange-400" :
+                    calculations.grossMarginPercent < 50 ? "text-green-600 dark:text-green-400" :
+                      "text-yellow-600 dark:text-yellow-400"
                   }`}
                 data-testid={`text-gross-margin-${index}`}
               >
@@ -383,17 +383,17 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
           </div>
           <div className="mt-4 grid grid-cols-1 gap-4">
             <div className={`p-4 rounded-lg border transition-colors ${calculations.grossMarginPercent < 0 ? "bg-red-500/5 border-red-500/20" :
-                calculations.grossMarginPercent < 20 ? "bg-orange-500/5 border-orange-500/20" :
-                  calculations.grossMarginPercent < 50 ? "bg-primary/5 border-primary/20" :
-                    "bg-yellow-500/5 border-yellow-500/20"
+              calculations.grossMarginPercent < 20 ? "bg-orange-500/5 border-orange-500/20" :
+                calculations.grossMarginPercent < 50 ? "bg-primary/5 border-primary/20" :
+                  "bg-yellow-500/5 border-yellow-500/20"
               }`}>
               <p className="text-sm text-muted-foreground mb-1">{t("expectedProfit")}</p>
               <p
                 key={calculations.expectedGrossProfit}
                 className={`text-2xl font-bold animate-flash px-2 -mx-2 inline-block ${calculations.grossMarginPercent < 0 ? "text-red-600 dark:text-red-400" :
-                    calculations.grossMarginPercent < 20 ? "text-orange-600 dark:text-orange-400" :
-                      calculations.grossMarginPercent < 50 ? "text-primary" :
-                        "text-yellow-600 dark:text-yellow-400"
+                  calculations.grossMarginPercent < 20 ? "text-orange-600 dark:text-orange-400" :
+                    calculations.grossMarginPercent < 50 ? "text-primary" :
+                      "text-yellow-600 dark:text-yellow-400"
                   }`}
                 data-testid={`text-profit-per-order-${index}`}
               >
@@ -1163,6 +1163,8 @@ export default function Home() {
       <footer className="text-center text-sm text-muted-foreground py-8">
         <div className="flex items-center justify-center gap-2">
           <span>{t("footerText")}</span>
+          <span className="opacity-50">|</span>
+          <span className="text-xs">v2.1</span>
         </div>
       </footer>
     </div>
