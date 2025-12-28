@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -370,11 +370,13 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
               <p className="text-sm text-muted-foreground mb-1">{t("grossMargin")}</p>
               <p
                 key={calculations.grossMarginPercent}
-                className={`text-lg font-semibold animate-flash px-2 -mx-2 ${calculations.grossMarginPercent < 0 ? "status-loss" :
-                  calculations.grossMarginPercent < 20 ? "status-warning" :
-                    calculations.grossMarginPercent < 50 ? "status-success" :
-                      "status-super"
-                  }`}
+                className="text-lg font-semibold animate-flash px-2 -mx-2"
+                style={{
+                  color: calculations.grossMarginPercent < 0 ? "#ef4444" : // Red-500
+                    calculations.grossMarginPercent < 20 ? "#f97316" : // Orange-500
+                      calculations.grossMarginPercent < 50 ? "#16a34a" : // Green-600
+                        "#ca8a04" // Yellow-600
+                }}
                 data-testid={`text-gross-margin-${index}`}
               >
                 {formatPercent(calculations.grossMarginPercent)}
@@ -382,25 +384,34 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
             </div>
           </div>
           <div className="mt-4 grid grid-cols-1 gap-4">
-            <div className={`p-4 rounded-lg border transition-colors ${calculations.grossMarginPercent < 0 ? "bg-status-loss" :
-              calculations.grossMarginPercent < 20 ? "bg-status-warning" :
-                calculations.grossMarginPercent < 50 ? "bg-status-success" :
-                  "bg-status-super"
-              }`}>
+            <div
+              className="p-4 rounded-lg border transition-colors"
+              style={{
+                backgroundColor: calculations.grossMarginPercent < 0 ? "rgba(239, 68, 68, 0.05)" :
+                  calculations.grossMarginPercent < 20 ? "rgba(249, 115, 22, 0.05)" :
+                    calculations.grossMarginPercent < 50 ? "rgba(22, 163, 74, 0.05)" :
+                      "rgba(234, 179, 8, 0.05)",
+                borderColor: calculations.grossMarginPercent < 0 ? "rgba(239, 68, 68, 0.2)" :
+                  calculations.grossMarginPercent < 20 ? "rgba(249, 115, 22, 0.2)" :
+                    calculations.grossMarginPercent < 50 ? "rgba(22, 163, 74, 0.2)" :
+                      "rgba(234, 179, 8, 0.2)"
+              }}
+            >
               <p className="text-sm text-muted-foreground mb-1">{t("expectedProfit")}</p>
               <p
                 key={calculations.expectedGrossProfit}
-                className={`text-2xl font-bold animate-flash px-2 -mx-2 inline-block ${calculations.grossMarginPercent < 0 ? "status-loss" :
-                  calculations.grossMarginPercent < 20 ? "status-warning" :
-                    calculations.grossMarginPercent < 50 ? "status-success" :
-                      "status-super"
-                  }`}
+                className="text-2xl font-bold animate-flash px-2 -mx-2 inline-block"
+                style={{
+                  color: calculations.grossMarginPercent < 0 ? "#dc2626" : // Red-600
+                    calculations.grossMarginPercent < 20 ? "#ea580c" : // Orange-600
+                      calculations.grossMarginPercent < 50 ? "#16a34a" : // Green-600
+                        "#ca8a04" // Yellow-600
+                }}
                 data-testid={`text-profit-per-order-${index}`}
               >
                 {formatCurrency(calculations.expectedGrossProfit)}
               </p>
             </div>
-
           </div>
         </CardContent>
       </Card>
