@@ -371,9 +371,9 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
               <p
                 key={calculations.grossMarginPercent}
                 className={`text-lg font-semibold animate-flash px-2 -mx-2 ${calculations.grossMarginPercent < 0 ? "status-loss" :
-                    calculations.grossMarginPercent < 20 ? "status-warning" :
-                      calculations.grossMarginPercent < 50 ? "status-success" :
-                        "status-super"
+                  calculations.grossMarginPercent < 20 ? "status-warning" :
+                    calculations.grossMarginPercent < 50 ? "status-success" :
+                      "status-super"
                   }`}
                 data-testid={`text-gross-margin-${index}`}
               >
@@ -383,17 +383,17 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
           </div>
           <div className="mt-4 grid grid-cols-1 gap-4">
             <div className={`p-4 rounded-lg border transition-colors ${calculations.grossMarginPercent < 0 ? "bg-status-loss" :
-                calculations.grossMarginPercent < 20 ? "bg-status-warning" :
-                  calculations.grossMarginPercent < 50 ? "bg-status-success" :
-                    "bg-status-super"
+              calculations.grossMarginPercent < 20 ? "bg-status-warning" :
+                calculations.grossMarginPercent < 50 ? "bg-status-success" :
+                  "bg-status-super"
               }`}>
               <p className="text-sm text-muted-foreground mb-1">{t("expectedProfit")}</p>
               <p
                 key={calculations.expectedGrossProfit}
                 className={`text-2xl font-bold animate-flash px-2 -mx-2 inline-block ${calculations.grossMarginPercent < 0 ? "status-loss" :
-                    calculations.grossMarginPercent < 20 ? "status-warning" :
-                      calculations.grossMarginPercent < 50 ? "status-success" :
-                        "status-super"
+                  calculations.grossMarginPercent < 20 ? "status-warning" :
+                    calculations.grossMarginPercent < 50 ? "status-success" :
+                      "status-super"
                   }`}
                 data-testid={`text-profit-per-order-${index}`}
               >
@@ -1164,7 +1164,7 @@ export default function Home() {
         <div className="flex items-center justify-center gap-2">
           <span>{t("footerText")}</span>
           <span className="opacity-50">|</span>
-          <span className="text-xs">v2.3 (Stable)</span>
+          <span className="text-xs">v2.4 (Inline)</span>
         </div>
       </footer>
     </div>
