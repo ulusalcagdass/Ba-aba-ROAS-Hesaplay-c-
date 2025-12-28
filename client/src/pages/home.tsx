@@ -1164,7 +1164,10 @@ export default function Home() {
         <div className="flex items-center justify-center gap-2">
           <span>{t("footerText")}</span>
           <span className="opacity-50">|</span>
-          <span className="text-xs">v2.1</span>
+          <span className="text-xs">v2.2</span>
+          <span style={{ color: 'red' }}>●</span>
+          <span style={{ color: 'green' }}>●</span>
+          <span style={{ color: 'gold' }}>●</span>
         </div>
       </footer>
     </div>
