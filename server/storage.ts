@@ -70,9 +70,11 @@ export class MemStorage implements IStorage {
   async createCalculation(insertCalculation: InsertCalculation): Promise<Calculation> {
     const id = (this.currentId++).toString();
     const calculation: Calculation = {
-      ...insertCalculation,
       id,
-      createdAt: new Date()
+      name: insertCalculation.name,
+      // @ts-ignore
+      products: insertCalculation.products || [],
+      createdAt: new Date(),
     };
     this.calculations.set(id, calculation);
     return calculation;
@@ -95,9 +97,12 @@ export class MemStorage implements IStorage {
   async createTemplate(insertTemplate: InsertTemplate): Promise<Template> {
     const id = (this.currentId++).toString();
     const template: Template = {
-      ...insertTemplate,
       id,
-      createdAt: new Date()
+      name: insertTemplate.name,
+      description: insertTemplate.description || null,
+      // @ts-ignore
+      products: insertTemplate.products || [],
+      createdAt: new Date(),
     };
     this.templates.set(id, template);
     return template;
