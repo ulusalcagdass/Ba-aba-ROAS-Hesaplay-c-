@@ -16,24 +16,25 @@
   --popover: 0 0% 100%;
   --popover-foreground: 240 10% 3.9%;
   /* Financial Blue Theme */
-  --primary: 221 83% 53%; /* Classic Trust Blue (like Chase/Amex) */
+  --primary: 221 83% 53%;
+  /* Classic Trust Blue (like Chase/Amex) */
   --primary-foreground: 210 40% 98%;
-  
+
   --secondary: 210 40% 96.1%;
   --secondary-foreground: 222 47.4% 11.2%;
-  
+
   --muted: 210 40% 96.1%;
   --muted-foreground: 215.4 16.3% 46.9%;
-  
+
   --accent: 210 40% 96.1%;
   --accent-foreground: 222 47.4% 11.2%;
-  
+
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
-  
+
   --border: 214.3 31.8% 91.4%;
   --input: 214.3 31.8% 91.4%;
-  
+
   --ring: 221 83% 53%;
   --radius: 0.75rem;
 
@@ -42,7 +43,7 @@
   --chart-3: 197 37% 24%;
   --chart-4: 43 74% 66%;
   --chart-5: 27 87% 67%;
-  
+
   --font-sans: 'Inter', sans-serif;
 
   /* Fallback for older browsers */
@@ -80,13 +81,15 @@
   --opaque-button-border-intensity: 9;
   --elevate-1: rgba(0, 0, 0, .05);
   --elevate-2: rgba(0, 0, 0, .10);
-  --background: 222 47% 11%; /* Midnight Blue Dark Background */
+  --background: 222 47% 11%;
+  /* Midnight Blue Dark Background */
   --foreground: 210 40% 98%;
   --card: 222 47% 11%;
   --card-foreground: 210 40% 98%;
   --popover: 222 47% 11%;
   --popover-foreground: 210 40% 98%;
-  --primary: 217 91% 60%; /* Brighter Blue for Dark Mode */
+  --primary: 217 91% 60%;
+  /* Brighter Blue for Dark Mode */
   --primary-foreground: 222 47.4% 11.2%;
   --secondary: 217 32% 17%;
   --secondary-foreground: 210 40% 98%;
@@ -107,14 +110,14 @@
   --chart-4: 280 65% 60%;
   --chart-5: 340 75% 55%;
 
-  --shadow-2xs: 0px 1px 1px -0.5px rgba(0,0,0,0.3);
-  --shadow-xs: 0px 1px 2px 0px rgba(0,0,0,0.3);
-  --shadow-sm: 0px 2px 4px -2px rgba(0,0,0,0.3);
-  --shadow: 0px 4px 6px -1px rgba(0,0,0,0.3);
-  --shadow-md: 0px 6px 10px -2px rgba(0,0,0,0.3);
-  --shadow-lg: 0px 10px 15px -3px rgba(0,0,0,0.3);
-  --shadow-xl: 0px 20px 25px -5px rgba(0,0,0,0.3);
-  --shadow-2xl: 0px 25px 50px -12px rgba(0,0,0,0.4);
+  --shadow-2xs: 0px 1px 1px -0.5px rgba(0, 0, 0, 0.3);
+  --shadow-xs: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0px 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0px 6px 10px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0px 10px 15px -3px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0px 20px 25px -5px rgba(0, 0, 0, 0.3);
+  --shadow-2xl: 0px 25px 50px -12px rgba(0, 0, 0, 0.4);
 
   /* Fallback for older browsers */
   --sidebar-primary-border: hsl(var(--sidebar-primary));
@@ -153,14 +156,16 @@
   body {
     @apply font-sans antialiased bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
-    font-variant-numeric: tabular-nums; /* Aligns numbers perfectly */
-    background-image: radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
-    background-size: 20px 20px; /* Subtle dot pattern */
+    font-variant-numeric: tabular-nums;
+    /* Aligns numbers perfectly */
+    background-image: radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    /* Subtle dot pattern */
   }
 
   /* Dark mode dot pattern */
   .dark body {
-    background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   }
 
   /* Custom Scrollbar */
@@ -168,28 +173,37 @@
     width: 10px;
     height: 10px;
   }
+
   ::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
+
   ::-webkit-scrollbar-thumb {
     @apply bg-muted-foreground/20 rounded-full hover:bg-muted-foreground/40 transition-colors;
   }
 
   /* Soft Focus Ring */
   *:focus-visible {
-     outline: 4px solid hsl(var(--primary) / 0.15) !important;
-     outline-offset: 1px !important;
-     border-color: hsl(var(--primary)) !important;
+    outline: 4px solid hsl(var(--primary) / 0.15) !important;
+    outline-offset: 1px !important;
+    border-color: hsl(var(--primary)) !important;
   }
 
   /* Mobile Optimizations */
   @media (max-width: 640px) {
-    input, select, textarea {
-      font-size: 16px !important; /* Prevents iOS zoom */
+
+    input,
+    select,
+    textarea {
+      font-size: 16px !important;
+      /* Prevents iOS zoom */
     }
-    
-    button, input, select {
-      min-height: 44px; /* Better touch targets */
+
+    button,
+    input,
+    select {
+      min-height: 44px;
+      /* Better touch targets */
     }
   }
 }
@@ -303,5 +317,22 @@
   .border.active-elevate-2:not(.no-active-interaction-elevate)::after,
   .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
     inset: -1px;
+  }
+
+  @keyframes flash {
+    0% {
+      background-color: hsl(var(--primary) / 0.1);
+      transform: scale(1.02);
+    }
+
+    100% {
+      background-color: transparent;
+      transform: scale(1);
+    }
+  }
+
+  .animate-flash {
+    animation: flash 0.5s ease-out;
+    border-radius: var(--radius);
   }
 }

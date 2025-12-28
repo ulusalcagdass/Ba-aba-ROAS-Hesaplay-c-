@@ -38,7 +38,12 @@ import {
   Loader2,
   AlertTriangle,
   Share2,
-  Download
+  Download,
+  Truck,
+  Box,
+  Wallet,
+  ShoppingBag,
+  Tag
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -215,6 +220,7 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
                 {t("aov")}
               </Label>
               <div className="relative">
+                <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <Input
                   id={`aov-${product.id}`}
                   data-testid={`input-aov-${index}`}
@@ -222,7 +228,7 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
                   step="0.01"
                   value={product.aov}
                   onChange={(e) => onUpdate("aov", e.target.value)}
-                  className="text-right pr-8"
+                  className="text-right pr-8 pl-9"
                 />
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">{currencySymbol}</span>
               </div>
@@ -232,6 +238,7 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
                 {t("productCost")}
               </Label>
               <div className="relative">
+                <ShoppingBag className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <Input
                   id={`productCost-${product.id}`}
                   data-testid={`input-product-cost-${index}`}
@@ -239,7 +246,7 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
                   step="0.01"
                   value={product.productCost}
                   onChange={(e) => onUpdate("productCost", e.target.value)}
-                  className="text-right pr-8"
+                  className="text-right pr-8 pl-9"
                 />
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">{currencySymbol}</span>
               </div>
@@ -261,6 +268,7 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
                 {t("creditCardFeePercent")}
               </Label>
               <div className="relative">
+                <CreditCard className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <Input
                   id={`creditCardFeePercent-${product.id}`}
                   data-testid={`input-credit-card-fee-${index}`}
@@ -268,7 +276,7 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
                   step="0.01"
                   value={product.creditCardFeePercent}
                   onChange={(e) => onUpdate("creditCardFeePercent", e.target.value)}
-                  className="text-right pr-8"
+                  className="text-right pr-8 pl-9"
                 />
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">%</span>
               </div>
@@ -278,6 +286,7 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
                 {t("paymentProcessingFee")}
               </Label>
               <div className="relative">
+                <Wallet className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <Input
                   id={`paymentProcessingFee-${product.id}`}
                   data-testid={`input-payment-fee-${index}`}
@@ -285,7 +294,7 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
                   step="0.01"
                   value={product.paymentProcessingFee}
                   onChange={(e) => onUpdate("paymentProcessingFee", e.target.value)}
-                  className="text-right pr-8"
+                  className="text-right pr-8 pl-9"
                 />
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">{currencySymbol}</span>
               </div>
@@ -295,6 +304,7 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
                 {t("shippingCost")}
               </Label>
               <div className="relative">
+                <Truck className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <Input
                   id={`shippingCost-${product.id}`}
                   data-testid={`input-shipping-cost-${index}`}
@@ -302,7 +312,7 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
                   step="0.01"
                   value={product.shippingCost}
                   onChange={(e) => onUpdate("shippingCost", e.target.value)}
-                  className="text-right pr-8"
+                  className="text-right pr-8 pl-9"
                 />
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">{currencySymbol}</span>
               </div>
@@ -312,6 +322,7 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
                 {t("fulfillmentCost")}
               </Label>
               <div className="relative">
+                <Box className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <Input
                   id={`fulfillmentCost-${product.id}`}
                   data-testid={`input-fulfillment-cost-${index}`}
@@ -319,7 +330,7 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
                   step="0.01"
                   value={product.fulfillmentCost}
                   onChange={(e) => onUpdate("fulfillmentCost", e.target.value)}
-                  className="text-right pr-8"
+                  className="text-right pr-8 pl-9"
                 />
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">{currencySymbol}</span>
               </div>
@@ -339,25 +350,25 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="p-4 bg-card rounded-lg border border-card-border">
               <p className="text-sm text-muted-foreground mb-1">{t("creditCardFee")}</p>
-              <p className="text-lg font-semibold" data-testid={`text-credit-card-fee-${index}`}>
+              <p key={calculations.creditCardFee} className="text-lg font-semibold animate-flash px-2 -mx-2" data-testid={`text-credit-card-fee-${index}`}>
                 {formatCurrency(calculations.creditCardFee)}
               </p>
             </div>
             <div className="p-4 bg-card rounded-lg border border-card-border">
               <p className="text-sm text-muted-foreground mb-1">{t("totalCost")}</p>
-              <p className="text-lg font-semibold" data-testid={`text-total-cost-${index}`}>
+              <p key={calculations.totalProductCostPlusFulfillment} className="text-lg font-semibold animate-flash px-2 -mx-2" data-testid={`text-total-cost-${index}`}>
                 {formatCurrency(calculations.totalProductCostPlusFulfillment)}
               </p>
             </div>
             <div className="p-4 bg-card rounded-lg border border-card-border">
               <p className="text-sm text-muted-foreground mb-1">{t("costPercentage")}</p>
-              <p className="text-lg font-semibold" data-testid={`text-cost-percentage-${index}`}>
+              <p key={calculations.costPercentage} className="text-lg font-semibold animate-flash px-2 -mx-2" data-testid={`text-cost-percentage-${index}`}>
                 {formatPercent(calculations.costPercentage)}
               </p>
             </div>
             <div className="p-4 bg-card rounded-lg border border-card-border">
               <p className="text-sm text-muted-foreground mb-1">{t("grossMargin")}</p>
-              <p className="text-lg font-semibold text-green-600 dark:text-green-400" data-testid={`text-gross-margin-${index}`}>
+              <p key={calculations.grossMarginPercent} className="text-lg font-semibold text-green-600 dark:text-green-400 animate-flash px-2 -mx-2" data-testid={`text-gross-margin-${index}`}>
                 {formatPercent(calculations.grossMarginPercent)}
               </p>
             </div>
@@ -365,7 +376,7 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
           <div className="mt-4 grid grid-cols-1 gap-4">
             <div className="p-4 bg-primary/5 rounded-lg border border-primary/20">
               <p className="text-sm text-muted-foreground mb-1">{t("expectedProfit")}</p>
-              <p className="text-2xl font-bold text-primary" data-testid={`text-profit-per-order-${index}`}>
+              <p key={calculations.expectedGrossProfit} className="text-2xl font-bold text-primary animate-flash px-2 -mx-2 inline-block" data-testid={`text-profit-per-order-${index}`}>
                 {formatCurrency(calculations.expectedGrossProfit)}
               </p>
             </div>
@@ -382,7 +393,7 @@ function ProductCard({ product, calculations, onUpdate, onRemove, onDuplicate, c
                 <Target className="w-5 h-5 text-primary" />
               </div>
             </div>
-            <p className="text-2xl font-bold text-primary mb-1" data-testid={`text-break-even-roas-${index}`}>
+            <p key={calculations.breakEvenRoas} className="text-2xl font-bold text-primary mb-1 animate-flash px-2 -mx-2 inline-block" data-testid={`text-break-even-roas-${index}`}>
               {formatRoas(calculations.breakEvenRoas)}
             </p>
             <p className="text-xs text-muted-foreground font-medium">{t("breakEvenRoas")}</p>
@@ -437,9 +448,12 @@ function ComparisonTable({ products, allCalculations }: ComparisonTableProps) {
 
   if (products.length < 2) {
     return (
-      <div className="text-center py-8 text-muted-foreground">
-        <BarChart3 className="w-12 h-12 mx-auto mb-3 opacity-50" />
-        <p>{t("comparisonEmpty")}</p>
+      <div className="flex flex-col items-center justify-center py-12 px-4 text-center border-2 border-dashed rounded-xl bg-muted/30">
+        <div className="p-4 bg-background rounded-full mb-4 shadow-sm">
+          <BarChart3 className="w-8 h-8 text-primary/60" />
+        </div>
+        <h3 className="text-lg font-semibold text-foreground mb-1">{t("comparisonTitle")}</h3>
+        <p className="text-muted-foreground max-w-xs">{t("comparisonEmpty")}</p>
       </div>
     );
   }
