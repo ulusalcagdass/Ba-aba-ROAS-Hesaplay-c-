@@ -1175,7 +1175,7 @@ export default function Home() {
         <div className="flex items-center justify-center gap-2">
           <span>{t("footerText")}</span>
           <span className="opacity-50">|</span>
-          <span className="text-xs">v2.4 (Inline)</span>
+          <span className="text-xs">v2.5 (Config Fix)</span>
         </div>
       </footer>
     </div>
